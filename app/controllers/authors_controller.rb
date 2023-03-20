@@ -3,7 +3,8 @@ class AuthorsController < ApplicationController
 
   def index
     authors = Author.all 
-    render json: authors
+    render json: authors, each_serializer: AuthorSerializer
+    
   end
 
   def show
@@ -16,5 +17,5 @@ class AuthorsController < ApplicationController
   def render_not_found_response
     render json: { error: "Author not found" }, status: :not_found
   end
-
+  
 end
